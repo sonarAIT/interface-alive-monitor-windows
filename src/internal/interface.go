@@ -7,12 +7,12 @@ import (
 )
 
 // Interface is represent machine network interface
+// Lists head IP Addr is Primary IP Address.
 type Interface struct {
-	Name      string
-	IPv4Addr  []netip.Addr
-	IPv6Addr  []netip.Addr
-	State     bool
-	IsPrimary bool
+	Name     string
+	IPv4Addr []netip.Addr
+	IPv6Addr []netip.Addr
+	State    bool
 }
 
 // InterfaceManager is interface list holder of machine
@@ -146,14 +146,18 @@ func (ifacem *InterfaceManager) Print() {
 		fmt.Println("{")
 		fmt.Println("\tInterfaceName: ", iface.Name)
 
-		fmt.Print("\tIPv4: [")
-		for _, addr := range iface.IPv4Addr {
+		fmt.Println("\tPrimary IPv4: ", iface.IPv4Addr[0].String())
+
+		fmt.Print("\tSecondary IPv4: [")
+		for _, addr := range iface.IPv4Addr[1:] {
 			fmt.Print(addr.String(), ",")
 		}
 		fmt.Println("]")
 
-		fmt.Print("\tIPv6: [")
-		for _, addr := range iface.IPv6Addr {
+		fmt.Println("\tPrimary IPv6: ", iface.IPv6Addr[0].String())
+
+		fmt.Print("\tSecondary IPv6: [")
+		for _, addr := range iface.IPv6Addr[1:] {
 			fmt.Print(addr.String(), ",")
 		}
 		fmt.Println("]")
