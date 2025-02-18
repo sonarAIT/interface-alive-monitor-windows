@@ -1,7 +1,11 @@
 package main
 
-import "github.com/interfaec-alive-monitor-windows/internal"
+import (
+	"github.com/interfaec-alive-monitor-windows/internal"
+)
 
 func main() {
-	internal.Test()
+	var ifaceManager internal.InterfaceManager
+	internal.RegistInterfaces(&ifaceManager)
+	ifaceManager.Print()
 }
