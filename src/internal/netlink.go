@@ -21,15 +21,19 @@ type MobilityMsg struct {
 }
 
 func createMovementDetecterSocket() (int, error) {
+	return 0, nil
 }
 
-func handleMobilityMessage(buf []byte) []NetlinkMsg {
+func handleMobilityMessage(buf []byte) []MobilityMsg {
+	return nil
 }
 
 func parseAddrMessage(buf []byte) (string, netip.Addr) {
+	return "", netip.Addr{}
 }
 
 func parseLinkMessage(buf []byte) (string, bool) {
+	return "", false
 }
 
 func RoutineMobilityMessageReceive(nlmsgCh chan []MobilityMsg) {
